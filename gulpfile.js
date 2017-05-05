@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var rename = require('gulp-rename');
 var elixir = require('laravel-elixir');
 
 /*
@@ -31,10 +32,38 @@ gulp.task("copyfiles",function()
 
 });
 
+gulp.task("copyFontAwesomeAndDataTables",function()
+{
+    gulp.src("bower_components/font-awesome/less/**")
+        .pipe(gulp.dest("resources/assets/less/fontawesome"));
+
+
+    gulp.src("bower_components/font-awesome/fonts/**")
+        .pipe(gulp.dest("resources/assets/fonts"));
+
+    var dtDir = 'bower_components/datatables-plugins/integration/';
+
+    gulp.src("bower_components/datatables/media/js/jquery.dataTables.js")
+        .pipe(gulp.dest('resources/assets/js/'));
+
+    gulp.src(dtDir + 'bootstrap/3/dataTables.bootstrap.css')
+        .pipe(rename('dataTables.bootstrap.less'))
+        .pipe(gulp.dest('resources/assets/less/others/'));
+
+    gulp.src(dtDir + 'bootstrap/3/dataTables.bootstrap.js')
+        .pipe(gulp.dest('resources/assets/js/'));
+
+});
+
 elixir(function(mix) {
 
     //合并js
-    mix.scripts(['js/jquery.js','js/bootstrap.js'],
+    mix.scripts([
+            'js/jquery.js',
+            'js/bootstrap.js',
+            'js/jquery.dataTables.js',
+            'js/dataTables.bootstrap.js'
+        ],
         'public/assets/js/admin.js',
         'resources/assets'
     );
