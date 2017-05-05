@@ -20,13 +20,13 @@ Route::get('blog/{slug}','BlogController@showPost')->name('blog.showPost');
 
 //Admin area
 Route::get('admin',function(){
-    return redirect();
+    return redirect('admin/post');
 });
 
 Route::group(['namespace' => 'Admin','middleware'=> 'auth'],function (){
     Route::resource('admin/post','PostController');
     Route::resource('admin/tag','TagController');
-    Route::get('admin/upload','UploadController@index');
+    Route::get('admin/upload','UploadController@index')->name('admin.upload');
 });
 
 //logging in and out
