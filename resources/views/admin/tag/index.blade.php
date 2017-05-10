@@ -49,7 +49,7 @@
                                 @endif
                             </td>
                             <td>
-                                <a href="{{ route('admin.tag.create',['id'=>$tag->id]) }}" class="btn btn-xs btn-info">
+                                <a href="{{ route('admin.tag.edit',['id'=>$tag->id]) }}" class="btn btn-xs btn-info">
                                     <i class="fa fa-edit"></i> Edit
                                 </a>
                             </td>
