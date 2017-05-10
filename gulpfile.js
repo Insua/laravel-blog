@@ -55,6 +55,12 @@ gulp.task("copyFontAwesomeAndDataTables",function()
 
 });
 
+gulp.task('copyFontsToPublic',function()
+{
+    gulp.src("resources/assets/fonts/**")
+        .pipe(gulp.dest("public/assets/fonts"));
+});
+
 elixir(function(mix) {
 
     //合并js
