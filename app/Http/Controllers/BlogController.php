@@ -20,7 +20,7 @@ class BlogController extends Controller
 
     public function showPost($slug)
     {
-        $post = Post::whereSlug($slug)->findOrFail();
+        $post = Post::whereSlug($slug)->firstOrFail();
 
         return view('blog.post')->withPost($post);
     }
