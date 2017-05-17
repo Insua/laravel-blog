@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\TagCreateRequest;
+use App\Http\Requests\TagUpdateRequest;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 
@@ -100,9 +101,10 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TagUpdateRequest $request, $id)
     {
-        //
+        $tag = Tag::findOrFail($id);
+        dd($tag);
     }
 
     /**
