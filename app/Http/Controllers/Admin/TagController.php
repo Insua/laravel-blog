@@ -104,7 +104,13 @@ class TagController extends Controller
     public function update(TagUpdateRequest $request, $id)
     {
         $tag = Tag::findOrFail($id);
-        dd($tag);
+        foreach(array_keys(array_except($this->fields,['tag'])) as $field)
+        {
+            $tag->$field = $request->get($field);
+        }
+        $tag->save();
+
+        return redirect(route('admin.tag.edit',['tag'=>$id]))->withSuccess('Changes saved.');
     }
 
     /**
@@ -115,6 +121,10 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $tag = Tag::findOrFail($id);
+
+        $tag->delete();
+
+        return redirect(route('admin.tag.index'))->withSuccess("The '$tag->tag' tag has been deleted");
     }
 }
