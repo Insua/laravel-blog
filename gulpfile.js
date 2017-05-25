@@ -76,4 +76,8 @@ elixir(function(mix) {
 
     //编译less
     mix.less('admin.less','public/assets/css/admin.css');
+
+    mix.browserSync({
+        proxy: 'blog.learn.app'
+    });
 });

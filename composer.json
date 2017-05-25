@@ -9,7 +9,8 @@
         "laravel/framework": "5.1.*",
         "barryvdh/laravel-debugbar": "^2.3",
         "barryvdh/laravel-ide-helper": "^2.3",
-        "sven/artisan-view": "^1.3"
+        "sven/artisan-view": "^1.3",
+        "dflydev/apache-mime-types": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
