@@ -3,6 +3,7 @@
 namespace App\Services;
 
 
+use Carbon\Carbon;
 use Dflydev\ApacheMimeTypes\PhpRepository;
 use Storage;
 
@@ -70,5 +71,35 @@ class UploadsManager
     protected function fileDetails($path)
     {
         $path = '/'.ltrim($path,'/');
+
+        return [
+            'name' => basename($path),
+            'fullPath' => $path,
+            'webPath' => $this->fileWebpath($path),
+            'mimeType' => $this->fileMimeType($path),
+            'size' => $this->fileSize($path),
+            'modified' => $this->fileModified($path)
+        ];
+    }
+
+    public function fileWebpath($path)
+    {
+        $path = rtrim(config('blog.uploads.webpath'),'/').'/'.ltrim($path,'/');
+        return url($path);
+    }
+
+    public function fileMimeType($path)
+    {
+        return $this->mimeDetect->findType(pathinfo($path,PATHINFO_EXTENSION));
+    }
+
+    public function fileSize($path)
+    {
+        return $this->disk->size($path);
+    }
+
+    public function fileModified($path)
+    {
+        return Carbon::createFromTimestamp($this->disk->lastModified($path));
     }
 }
