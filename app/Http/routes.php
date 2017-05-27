@@ -23,10 +23,15 @@ Route::get('admin',function(){
     return redirect('admin/post');
 });
 
-Route::group(['namespace' => 'Admin','middleware'=> 'auth'],function (){
-    Route::resource('admin/post','PostController');
-    Route::resource('admin/tag','TagController',['except'=>'show']);
-    Route::get('admin/upload','UploadController@index')->name('admin.upload');
+Route::group(['namespace' => 'Admin','middleware'=> 'auth','prefix' => 'admin'],function (){
+    Route::resource('post','PostController');
+    Route::resource('tag','TagController',['except'=>'show']);
+    Route::get('upload','UploadController@index')->name('admin.upload');
+
+    Route::post('upload/file','UploadController@uploadFile');
+    Route::delete('upload/file','UploadController@deleteFile');
+    Route::post('upload/folder','UploadController@createFolder');
+    Route::delete('upload/folder','UploadController@deleteFolder');
 });
 
 //logging in and out
