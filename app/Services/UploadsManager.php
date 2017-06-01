@@ -102,4 +102,9 @@ class UploadsManager
     {
         return Carbon::createFromTimestamp($this->disk->lastModified($path));
     }
+
+    public function createDirectory($folder)
+    {
+
+    }
 }
