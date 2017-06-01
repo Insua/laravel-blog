@@ -105,6 +105,50 @@ class UploadsManager
 
     public function createDirectory($folder)
     {
+        $folder = $this->cleanFolder($folder);
 
+        if($this->disk->exists($folder))
+        {
+            return "Folder '$folder' already exists.";
+        }
+
+        return $this->disk->makeDirectory($folder);
+    }
+
+    public function deleteFile($path)
+    {
+        $path = $this->cleanFolder($path);
+
+        if(! $this->disk->exists($path))
+        {
+            return 'File does not exist.';
+        }
+
+        return $this->disk->delete($path);
+    }
+
+    public function deleteDirectory($folder)
+    {
+        $folder = $this->cleanFolder($folder);
+
+        $filesFolders = array_merge($this->disk->directories($folder),$this->disk->files($folder));
+        if(!empty($filesFolders))
+        {
+            return "Directory must be empty to delete it.";
+        }
+
+        return $this->disk->deleteDirectory($folder);
+    }
+
+    public function saveFile($path, $content)
+    {
+        $path = $this->cleanFolder($path);
+
+        if($this->disk->exists($path))
+        {
+            return "File already exists.";
+        }
+
+        return $this->disk->put($path,$content);
     }
 }
