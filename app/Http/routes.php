@@ -32,6 +32,8 @@ Route::group(['namespace' => 'Admin','middleware'=> 'auth','prefix' => 'admin'],
     Route::delete('upload/file','UploadController@deleteFile');
     Route::post('upload/folder','UploadController@createFolder');
     Route::delete('upload/folder','UploadController@deleteFolder');
+
+    Route::get('picture/view','PictureController@view');
 });
 
 //logging in and out
