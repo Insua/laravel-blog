@@ -78,7 +78,8 @@ class UploadsManager
             'webPath' => $this->fileWebpath($path),
             'mimeType' => $this->fileMimeType($path),
             'size' => $this->fileSize($path),
-            'modified' => $this->fileModified($path)
+            'modified' => $this->fileModified($path),
+            'previewpic' => $this->previewPic($path)
         ];
     }
 
@@ -150,5 +151,10 @@ class UploadsManager
         }
 
         return $this->disk->put($path,$content);
+    }
+
+    public function previewPic($path)
+    {
+        return route('admin.picture.preview',['path'=>$path,'mimetype'=>$this->fileMimeType($path)]);
     }
 }

@@ -33,7 +33,7 @@ Route::group(['namespace' => 'Admin','middleware'=> 'auth','prefix' => 'admin'],
     Route::post('upload/folder','UploadController@createFolder');
     Route::delete('upload/folder','UploadController@deleteFolder');
 
-    Route::get('picture/view','PictureController@view');
+    Route::get('picture/view','PictureController@view')->name('admin.picture.preview');
 });
 
 //logging in and out
