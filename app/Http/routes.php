@@ -34,6 +34,7 @@ Route::group(['namespace' => 'Admin','middleware'=> 'auth','prefix' => 'admin'],
     Route::delete('upload/folder','UploadController@deleteFolder');
 
     Route::get('picture/view','PictureController@view')->name('admin.picture.preview');
+    Route::get('file/download','FileController@download')->name('admin.file.download');
 });
 
 //logging in and out

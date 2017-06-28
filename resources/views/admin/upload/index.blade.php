@@ -69,7 +69,7 @@
                     @foreach ($files as $file)
                         <tr>
                             <td>
-                                <a href="{{ $file['webPath'] }}">
+                                <a href="{{ $file['download'] }}">
                                     @if (is_image($file['mimeType']))
                                         <i class="fa fa-file-image-o fa-lg fa-fw"></i>
                                     @else

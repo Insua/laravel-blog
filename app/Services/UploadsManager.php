@@ -79,7 +79,8 @@ class UploadsManager
             'mimeType' => $this->fileMimeType($path),
             'size' => $this->fileSize($path),
             'modified' => $this->fileModified($path),
-            'previewpic' => $this->previewPic($path)
+            'previewpic' => $this->previewPic($path),
+            'download' => $this->downloadFile($path),
         ];
     }
 
@@ -156,5 +157,10 @@ class UploadsManager
     public function previewPic($path)
     {
         return route('admin.picture.preview',['path'=>$path,'mimetype'=>$this->fileMimeType($path)]);
+    }
+
+    public function downloadFile($path)
+    {
+        return route('admin.file.download',['path'=>$path]);
     }
 }
