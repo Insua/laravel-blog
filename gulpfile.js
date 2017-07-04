@@ -61,6 +61,22 @@ gulp.task('copyFontsToPublic',function()
         .pipe(gulp.dest("public/assets/fonts"));
 });
 
+gulp.task("copySelectizeAndPickadate",function()
+{
+    gulp.src("bower_components/selectize/dist/css/**")
+        .pipe(gulp.dest("public/assets/selectize/css"));
+    gulp.src("bower_components/selectize/dist/js/standalone/selectize.min.js")
+        .pipe(gulp.dest("public/assets/selectize/"));
+    gulp.src("bower_components/pickadate/lib/compressed/themes/**")
+        .pipe(gulp.dest("public/assets/pickadate/themes/"));
+    gulp.src("bower_components/pickadate/lib/compressed/picker.js")
+        .pipe(gulp.dest("public/assets/pickadate/"));
+    gulp.src("bower_components/pickadate/lib/compressed/picker.date.js")
+        .pipe(gulp.dest("public/assets/pickadate/"));
+    gulp.src("bower_components/pickadate/lib/compressed/picker.time.js")
+        .pipe(gulp.dest("public/assets/pickadate/"));
+});
+
 elixir(function(mix) {
 
     //合并js
