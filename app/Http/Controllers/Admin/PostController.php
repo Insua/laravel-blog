@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Jobs\PostFormFields;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -26,7 +28,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $data = $this->dispatch(new PostFormFields());
+        return view('admin.post.create',$data);
     }
 
     /**
@@ -37,7 +40,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post = Post::create($request);
     }
 
     /**

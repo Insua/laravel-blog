@@ -24,3 +24,29 @@ function is_image($mimeType)
 {
     return starts_with($mimeType,'image/');
 }
+
+/**
+ * return "checked" if true
+ * @param $value
+ * @return string
+ */
+function checked($value)
+{
+    return $value ? 'checked' : '';
+}
+
+/**
+ * return img url for headers
+ */
+function page_image($value = null)
+{
+    if(empty($value))
+    {
+        $value = config('blog.page_image');
+    }
+    if(! starts_with($value,'http') && $value[0] !== '/')
+    {
+        $value = config('blog.uploads.webpath') . '/' . $value;
+    }
+    return $value;
+}

@@ -4,6 +4,32 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\Tag
+ *
+ * @property int $id
+ * @property string $tag
+ * @property string $title
+ * @property string $subtitle
+ * @property string $page_image
+ * @property string $meta_description
+ * @property string $layout
+ * @property int $reverse_direction
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Post[] $posts
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tag whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tag whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tag whereLayout($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tag whereMetaDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tag wherePageImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tag whereReverseDirection($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tag whereSubtitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tag whereTag($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tag whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tag whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class Tag extends Model
 {
     protected $fillable = [
